@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdminDTO {
+    private String token;
     private String loginId;
     private String password;
     private String name;
