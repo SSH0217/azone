@@ -33,4 +33,5 @@ public class UserInputEntity {
     private int dbp;
     private double temperature;
     private Date time;
+    private String phone;
 }

@@ -27,6 +27,4 @@ public class ModelResultEntity {
     private double height;
     private double weight;
     private double constVal;
-    private double smoking;
-    private double drinking;
 }

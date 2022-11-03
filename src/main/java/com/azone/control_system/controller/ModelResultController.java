@@ -17,8 +17,16 @@ public class ModelResultController {
 
     public void testModel(int age, int height, int weight){
         List<ModelResultEntity> list = modelResultService.retrieve();
-        ModelResultEntity sbp = list.get(0);
-        ModelResultEntity dbp = list.get(1);
+        ModelResultEntity sbp;
+        ModelResultEntity dbp;
+        if(list.get(0).getSbpOrDbp().equals("sbp")){
+            sbp = list.get(0);
+            dbp = list.get(1);
+        }
+        else {
+            sbp = list.get(1);
+            dbp = list.get(0);
+        }
 
         double sbpPredict = age * sbp.getAge() + height * sbp.getHeight() + weight * sbp.getWeight() + sbp.getConstVal();
         double dbpPredict = age * dbp.getAge() + height * dbp.getHeight() + weight * dbp.getWeight() + dbp.getConstVal();
