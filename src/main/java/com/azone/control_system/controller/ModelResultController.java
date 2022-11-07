@@ -1,7 +1,5 @@
 package com.azone.control_system.controller;
 
-import com.azone.control_system.dto.ResponseDTO;
-import com.azone.control_system.dto.UserInputDTO;
 import com.azone.control_system.model.ModelResultEntity;
 import com.azone.control_system.service.ModelResultService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,10 +29,11 @@ public class ModelResultController {
         double sbpPredict = age * sbp.getAge() + height * sbp.getHeight() + weight * sbp.getWeight() + sbp.getConstVal();
         double dbpPredict = age * dbp.getAge() + height * dbp.getHeight() + weight * dbp.getWeight() + dbp.getConstVal();
 
-        double sbpPlusError = sbpPredict + sbpPredict * 0.1;
-        double sbpMinusError = sbpPredict - sbpPredict * 0.1;
-        double dbpPlusError = dbpPredict + dbpPredict * 0.1;
-        double dbpMinusError = dbpPredict - dbpPredict * 0.1;
+        double errorValue = 0.05;
+        double sbpPlusError = sbpPredict + sbpPredict * errorValue;
+        double sbpMinusError = sbpPredict - sbpPredict * errorValue;
+        double dbpPlusError = dbpPredict + dbpPredict * errorValue;
+        double dbpMinusError = dbpPredict - dbpPredict * errorValue;
 
         // input value if문 확인 후 db 저장
         // if(sbpMinusError <= inputSBP && inputSBP <= sbpPlusError && dbpMinusError <= inputDBP && inputDBP <= dbpPlusError) {
